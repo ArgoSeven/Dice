@@ -2,7 +2,6 @@ package org.argoseven.dice.client;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.argoseven.dice.DiceItem;

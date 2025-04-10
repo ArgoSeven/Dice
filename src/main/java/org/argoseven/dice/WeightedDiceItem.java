@@ -14,7 +14,7 @@ import java.util.Random;
 public class WeightedDiceItem extends DiceItem {
     int[] weightedValues = {6, 6, 6, 6, 5, 5, 5, 4, 4, 3, 2, 1};
 
-    //DELATE TOOLTIP
+    //DELETE TOOLTIP
     public WeightedDiceItem(int maxDiceFace) {
         super(maxDiceFace);
     }

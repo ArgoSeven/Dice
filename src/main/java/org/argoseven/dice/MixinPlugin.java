@@ -1,7 +1,6 @@
 package org.argoseven.dice;
 
 import me.fallenbreath.conditionalmixin.api.mixin.RestrictiveMixinConfigPlugin;
-import org.slf4j.Logger;
 
 import java.util.List;
 import java.util.Set;

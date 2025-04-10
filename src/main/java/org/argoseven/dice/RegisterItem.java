@@ -1,6 +1,5 @@
 package org.argoseven.dice;
 
-import net.minecraft.block.DispenserBlock;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
