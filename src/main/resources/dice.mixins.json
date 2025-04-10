@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.argoseven.dice.mixin",
+  "plugin": "org.argoseven.dice.MixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "ItemPhysicPatch"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

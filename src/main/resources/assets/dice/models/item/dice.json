@@ -1,0 +1,42 @@
+{
+  "parent": "dice:item/dice_1",
+  "elements": [],
+  "overrides": [
+    {
+      "predicate": {
+        "dice_value": 0.1
+      },
+      "model": "dice:item/dice_1"
+    },
+    {
+      "predicate": {
+        "dice_value": 0.2
+      },
+      "model": "dice:item/dice_2"
+    },
+    {
+      "predicate": {
+        "dice_value": 0.3
+      },
+      "model": "dice:item/dice_3"
+    },
+    {
+      "predicate": {
+        "dice_value": 0.4
+      },
+      "model": "dice:item/dice_4"
+    },
+    {
+      "predicate": {
+        "dice_value": 0.5
+      },
+      "model": "dice:item/dice_5"
+    },
+    {
+      "predicate": {
+        "dice_value": 0.6
+      },
+      "model": "dice:item/dice_6"
+    }
+  ]
+}

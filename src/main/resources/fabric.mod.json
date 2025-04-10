@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "dice",
+  "version": "${version}",
+
+  "name": "Dice",
+  "description": "",
+  "authors": [],
+  "contact": {},
+
+  "license": "MIT",
+  "icon": "assets/dice/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": ["org.argoseven.dice.client.DiceClient"],
+    "main": ["org.argoseven.dice.Dice"]
+  },
+
+  "mixins": [
+    "dice.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
