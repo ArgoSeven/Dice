@@ -15,8 +15,7 @@ import org.argoseven.dice.RegisterItem;
 import org.argoseven.dice.WeightedDiceItem;
 
 public class DiceClient implements ClientModInitializer, DyeableItem {
-
-
+    public static final int DEFAULT_TINT = 0xe2c986;
     @Override
     public void onInitializeClient() {
         ItemTooltipCallback.EVENT.register(ItemTooltipCallbackEvent::register);
@@ -28,8 +27,17 @@ public class DiceClient implements ClientModInitializer, DyeableItem {
             if (nbtCompound != null) {
                 return nbtCompound.getInt("color");
             }
-            return 0x97572b;
+            return DEFAULT_TINT;
         }, RegisterItem.BASIC_DICE);
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+            NbtCompound nbtCompound = stack.getSubNbt("display");
+            if (nbtCompound != null) {
+                return nbtCompound.getInt("color");
+            }
+            return DEFAULT_TINT;
+        }, RegisterItem.WEIGHTED_DICE);
+
 
 
         ModelPredicateProviderRegistry.register(RegisterItem.BASIC_DICE, new Identifier("dice_value"), (stack, world, entity, seed) -> {
