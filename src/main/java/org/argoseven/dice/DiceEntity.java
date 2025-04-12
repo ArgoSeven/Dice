@@ -32,10 +32,10 @@ public class DiceEntity extends ThrownItemEntity {
             super(RegisterEntity.THROWABLE_DICE, livingEntity, world);
     }
 
-    @Override
+    /*@Override
     public void setItem(ItemStack item) {
         super.setItem(item);
-    }
+    }*/
 
     @Override
     protected Item getDefaultItem() {
@@ -59,8 +59,7 @@ public class DiceEntity extends ThrownItemEntity {
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!world.isClient) {
-            ItemStack diceToSpawn = this.getItem();
-            ItemEntity dice_entity = new ItemEntity(world, this.getX(), this.getY(), this.getZ(), diceToSpawn);
+            ItemEntity dice_entity = new ItemEntity(world, this.getX(), this.getY(), this.getZ(), this.getStack());
             dice_entity.setPickupDelay(10);
 
             world.spawnEntity(dice_entity);

@@ -57,10 +57,7 @@ public class DiceItem extends Item implements DyeableItem {
         return TypedActionResult.success(itemStack, world.isClient());
     }
 
-    public static NbtCompound diceRandomValue(int maxValue){
-        NbtCompound randomValue = new NbtCompound();
-        Random random = new Random();
-        randomValue.putDouble("Dice", (double) (random.nextInt(maxValue) + 1) / 10);
-        return randomValue;
+    public static double diceRandomValue(int maxValue){
+        return (double) (new Random().nextInt(maxValue) + 1) / 10;
     }
 }
