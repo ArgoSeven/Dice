@@ -6,10 +6,11 @@ import org.slf4j.LoggerFactory;
 
 public class Dice implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("dice");
-
     @Override
     public void onInitialize() {
         RegisterItem.registerModItem();
         RegisterEntity.registerModEnities();
+        RegisterTradesAndLoot.registerTrades();
+        RegisterTradesAndLoot.appendVanillaLootTable();
     }
 }

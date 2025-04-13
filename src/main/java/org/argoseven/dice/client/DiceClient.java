@@ -9,10 +9,7 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.item.DyeableItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
-import org.argoseven.dice.DiceItem;
-import org.argoseven.dice.RegisterEntity;
-import org.argoseven.dice.RegisterItem;
-import org.argoseven.dice.WeightedDiceItem;
+import org.argoseven.dice.*;
 
 public class DiceClient implements ClientModInitializer, DyeableItem {
     public static final int DEFAULT_TINT = 0xe2c986;
@@ -41,7 +38,7 @@ public class DiceClient implements ClientModInitializer, DyeableItem {
 
 
         ModelPredicateProviderRegistry.register(RegisterItem.BASIC_DICE, new Identifier("dice_value"), (stack, world, entity, seed) -> {
-            if ((stack.getItem() instanceof DiceItem && stack.getNbt() != null)) {
+            if ((stack.getItem() instanceof DiceItem && (stack.getNbt() != null && stack.getNbt().contains("Dice")))) {
                 return (float) stack.getNbt().getDouble("Dice");
             } else {
                 return 0.0F;
@@ -49,7 +46,7 @@ public class DiceClient implements ClientModInitializer, DyeableItem {
         });
 
         ModelPredicateProviderRegistry.register(RegisterItem.WEIGHTED_DICE, new Identifier("dice_value"), (stack, world, entity,seed) -> {
-            if ((stack.getItem() instanceof WeightedDiceItem && stack.getNbt() != null)) {
+            if ((stack.getItem() instanceof WeightedDiceItem && (stack.getNbt() != null && stack.getNbt().contains("Dice")))) {
                 return (float) stack.getNbt().getDouble("Dice");
             } else {
                 return 0.6F;

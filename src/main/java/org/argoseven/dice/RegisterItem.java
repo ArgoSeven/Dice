@@ -12,6 +12,6 @@ public class RegisterItem {
         return Registry.register(Registry.ITEM, new Identifier("dice", name), item);
     }
     public static void registerModItem(){
-        System.out.println("Register Item");
+        Dice.LOGGER.info("Register Items");
     }
 }

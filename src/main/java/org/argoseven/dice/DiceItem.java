@@ -20,7 +20,8 @@ import java.util.Random;
 
 
 public class DiceItem extends Item implements DyeableItem {
-    protected int maxDiceFace;
+    private final int maxDiceFace;
+    protected static final float THROW_SPEED = 0.3f;
     public static final DispenserBehavior DISPENSER_BEHAVIOR = new ItemDispenserBehavior(){
         @Override
         protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
@@ -51,7 +52,7 @@ public class DiceItem extends Item implements DyeableItem {
         if (!world.isClient) {
             DiceEntity diceEntity = new DiceEntity(user, world);
             diceEntity.setItem(roll(itemStack));
-            diceEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 0.5f, 0.3f);
+            diceEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, THROW_SPEED, 0.3f);
             world.spawnEntity(diceEntity);
         }
         user.incrementStat(Stats.USED.getOrCreateStat(this));

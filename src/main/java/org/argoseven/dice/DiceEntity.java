@@ -32,10 +32,6 @@ public class DiceEntity extends ThrownItemEntity {
             super(RegisterEntity.THROWABLE_DICE, livingEntity, world);
     }
 
-    /*@Override
-    public void setItem(ItemStack item) {
-        super.setItem(item);
-    }*/
 
     @Override
     protected Item getDefaultItem() {
@@ -49,18 +45,15 @@ public class DiceEntity extends ThrownItemEntity {
             this.world.addParticle(new ItemStackParticleEffect(ParticleTypes.ITEM, this.getStack()), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         }
     }
-    @Override
-    protected void onEntityHit(EntityHitResult entityHitResult) {
-        super.onEntityHit(entityHitResult);
-        //entityHitResult.getEntity().damage(DamageSource.thrownProjectile(this, this.getOwner()), 0.0F);
-    }
+
+
 
     @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!world.isClient) {
             ItemEntity dice_entity = new ItemEntity(world, this.getX(), this.getY(), this.getZ(), this.getStack());
-            dice_entity.setPickupDelay(10);
+            dice_entity.setPickupDelay(60);
 
             world.spawnEntity(dice_entity);
             world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.BLOCK_LODESTONE_PLACE, SoundCategory.NEUTRAL, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));

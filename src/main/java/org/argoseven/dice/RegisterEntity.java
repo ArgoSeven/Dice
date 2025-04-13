@@ -17,6 +17,6 @@ public class RegisterEntity {
     }
 
     public static void registerModEnities(){
-        System.out.println("Register Enitities");
+        Dice.LOGGER.info("Register Entities");
     }
 }

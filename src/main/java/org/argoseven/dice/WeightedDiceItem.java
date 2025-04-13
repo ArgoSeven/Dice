@@ -13,7 +13,6 @@ import java.util.Random;
 
 public class WeightedDiceItem extends DiceItem {
     int[] weightedValues = {6, 6, 6, 6, 5, 5, 5, 4, 4, 3, 2, 1};
-
     //DELETE TOOLTIP
     public WeightedDiceItem(int maxDiceFace) {
         super(maxDiceFace);
@@ -27,7 +26,7 @@ public class WeightedDiceItem extends DiceItem {
         if (!world.isClient) {
             DiceEntity diceEntity = new DiceEntity(user, world);
             diceEntity.setItem(roll(itemStack));
-            diceEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 0.5f, 0.3f);
+            diceEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, THROW_SPEED, 0.3f);
             world.spawnEntity(diceEntity);
         }
         user.incrementStat(Stats.USED.getOrCreateStat(this));
