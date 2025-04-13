@@ -52,7 +52,7 @@ public class DiceClient implements ClientModInitializer, DyeableItem {
             if ((stack.getItem() instanceof WeightedDiceItem && stack.getNbt() != null)) {
                 return (float) stack.getNbt().getDouble("Dice");
             } else {
-                return 0.0F;
+                return 0.6F;
             }
         });
     }

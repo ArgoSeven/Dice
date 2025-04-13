@@ -20,20 +20,13 @@ public class WeightedDiceItem extends DiceItem {
     }
 
     @Override
-    public ItemStack getDefaultStack() {
-        ItemStack stack = super.getDefaultStack();
-        stack.setNbt(weightedDiceRandomValue(weightedValues));
-        return stack;
-    }
-
-    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         user.getItemCooldownManager().set(this, 20);
         user.spawnSweepAttackParticles();
         if (!world.isClient) {
             DiceEntity diceEntity = new DiceEntity(user, world);
-            diceEntity.setItem(itemStack.getItem().getDefaultStack());
+            diceEntity.setItem(roll(itemStack));
             diceEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 0.5f, 0.3f);
             world.spawnEntity(diceEntity);
         }
@@ -44,16 +37,17 @@ public class WeightedDiceItem extends DiceItem {
         return TypedActionResult.success(itemStack, world.isClient());
     }
 
-    public static NbtCompound weightedDiceRandomValue(int[] weight) {
-        NbtCompound randomValue = new NbtCompound();
-        Random random = new Random();
+    @Override
+    public ItemStack roll(ItemStack stack) {
+        ItemStack copy = stack.copy();
+        copy.getOrCreateNbt().putDouble("Dice", weightedDiceRandomValue(weightedValues));
+        return copy;
+    }
 
-        // Create an array of possible values with weights  6 , 5 has the highest probability, then 4, then 1-3
-        int index = random.nextInt(weight.length);
+    public static Double weightedDiceRandomValue(int[] weight) {
+        int index = new Random().nextInt(weight.length);
+        System.out.println("Piero");
         int result = weight[index];
-
-        // Store the result in the NbtCompound
-        randomValue.putDouble("Dice", (double) result / 10);
-        return randomValue;
+        return ((double) result / 10);
     }
 }

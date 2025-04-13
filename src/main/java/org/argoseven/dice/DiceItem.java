@@ -24,9 +24,8 @@ public class DiceItem extends Item implements DyeableItem {
     public static final DispenserBehavior DISPENSER_BEHAVIOR = new ItemDispenserBehavior(){
         @Override
         protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
-            ItemStack newStack = stack.copy();
-            newStack.getOrCreateNbt().putDouble("Dice",diceRandomValue(((DiceItem) newStack.getItem()).maxDiceFace));
-            super.dispenseSilently(pointer, newStack);
+            DiceItem diceItem = (DiceItem) stack.getItem();
+            super.dispenseSilently(pointer, diceItem.roll(stack));
             stack.decrement(1);
             return stack;
         }
@@ -38,6 +37,12 @@ public class DiceItem extends Item implements DyeableItem {
         DispenserBlock.registerBehavior(this, DISPENSER_BEHAVIOR);
     }
 
+    public ItemStack roll(ItemStack stack){
+        ItemStack copy = stack.copy();
+        copy.getOrCreateNbt().putDouble("Dice", diceRandomValue(maxDiceFace));
+        return copy;
+    }
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
@@ -45,8 +50,7 @@ public class DiceItem extends Item implements DyeableItem {
         user.spawnSweepAttackParticles();
         if (!world.isClient) {
             DiceEntity diceEntity = new DiceEntity(user, world);
-            itemStack.getOrCreateNbt().putDouble("Dice",diceRandomValue(maxDiceFace));
-            diceEntity.setItem(itemStack);
+            diceEntity.setItem(roll(itemStack));
             diceEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 0.5f, 0.3f);
             world.spawnEntity(diceEntity);
         }
@@ -58,6 +62,7 @@ public class DiceItem extends Item implements DyeableItem {
     }
 
     public static double diceRandomValue(int maxValue){
+        System.out.println("Franco");
         return (double) (new Random().nextInt(maxValue) + 1) / 10;
     }
 }
