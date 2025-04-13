@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerProfession;
 
-public class RegisterTradesAndLoot {
+public class    RegisterTradesAndLoot {
     private static final TradeOffer DICE_TRADE = new TradeOffer(new ItemStack(Items.GOLD_NUGGET, 1), new ItemStack(RegisterItem.BASIC_DICE, 1), 20, 5, 0.1f);
     private static final TradeOffer WEIGHTED_DICE_TRADE = new TradeOffer(new ItemStack(Items.GOLD_NUGGET, 1), new ItemStack(RegisterItem.WEIGHTED_DICE, 1), 20, 5, 0.1f);
     private static final Identifier SHIPWRECK_TREASURE = new Identifier("minecraft", "chests/shipwreck_treasure");
