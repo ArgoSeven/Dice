@@ -45,7 +45,6 @@ public class WeightedDiceItem extends DiceItem {
 
     public static Double weightedDiceRandomValue(int[] weight) {
         int index = new Random().nextInt(weight.length);
-        System.out.println("Piero");
         int result = weight[index];
         return ((double) result / 10);
     }

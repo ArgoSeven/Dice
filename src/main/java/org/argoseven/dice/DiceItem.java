@@ -63,7 +63,6 @@ public class DiceItem extends Item implements DyeableItem {
     }
 
     public static double diceRandomValue(int maxValue){
-        System.out.println("Franco");
         return (double) (new Random().nextInt(maxValue) + 1) / 10;
     }
 }
