@@ -5,6 +5,7 @@
   "plugin": "org.argoseven.dice.MixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "DiceDrop"
   ],
   "client": [
     "ItemPhysicPatch"
