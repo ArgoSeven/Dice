@@ -33,7 +33,7 @@ public class DiceItem extends Item implements DyeableItem {
     };
 
     public DiceItem(int maxDiceFace) {
-        super(new FabricItemSettings().maxCount(64).group(ItemGroup.COMBAT).rarity(Rarity.UNCOMMON));
+        super(new FabricItemSettings().maxCount(1).group(ItemGroup.COMBAT).rarity(Rarity.UNCOMMON));
         this.maxDiceFace = maxDiceFace;
         DispenserBlock.registerBehavior(this, DISPENSER_BEHAVIOR);
     }
